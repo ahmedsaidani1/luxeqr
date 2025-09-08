@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ultra-Luxury Jewelry Boutique Design System
+All colors MUST be HSL for premium aesthetic.
+*/
+
+@layer base {
+  :root {
+    /* Core luxury palette */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Premium gold as primary */
+    --primary: 45 100% 60%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Elegant secondary tones */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 45 95% 55%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 45 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Luxury-specific colors */
+    --gold: 45 100% 60%;
+    --gold-light: 45 100% 70%;
+    --gold-dark: 45 100% 45%;
+    --luxury-black: 0 0% 0%;
+    --luxury-white: 0 0% 100%;
+    --luxury-gray: 0 0% 15%;
+    
+    /* Shimmer effect colors */
+    --shimmer-from: 45 100% 50%;
+    --shimmer-via: 45 100% 70%;
+    --shimmer-to: 45 100% 40%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+    --gradient-shimmer: linear-gradient(90deg, transparent, hsla(var(--shimmer-via), 0.4), transparent);
+    --gradient-hero: radial-gradient(ellipse at center, hsla(var(--gold), 0.1) 0%, hsl(var(--luxury-black)) 70%);
+    
+    /* Premium shadows */
+    --shadow-gold: 0 10px 30px -5px hsla(var(--gold), 0.3);
+    --shadow-luxury: 0 25px 50px -12px hsla(var(--luxury-black), 0.8);
+    
+    /* Typography scale */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light variant for premium contrast */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
+    --border: 0 0% 85%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 0%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  /* Luxury shimmer animation */
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-shimmer);
+    animation: shimmer 3s infinite;
+    z-index: 1;
+  }
+  
+  @keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+  
+  /* Gold glow effect */
+  .gold-glow {
+    box-shadow: 0 0 20px hsla(var(--gold), 0.5), 0 0 40px hsla(var(--gold), 0.3);
+  }
+  
+  /* Luxury button styles */
+  .btn-luxury {
+    background: var(--gradient-gold);
+    border: 1px solid hsl(var(--gold));
+    color: hsl(var(--luxury-black));
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+  }
+  
+  /* Parallax sections */
+  .parallax {
+    transform-style: preserve-3d;
+  }
+  
+  /* Fade in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
